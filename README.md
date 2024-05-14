@@ -4,7 +4,7 @@ Have you ever wondered who “Jana kun” is? Well, that is the famous Yann LeCu
 
 “the following is a conversation with Jana kun he's considered to be one of the fathers of deep learning which if …”
 
-For those of you who want to keep the trascripts of such valuable interviews, wait not more. Get the “Bedrock Youtube transcription” which I have published to the Amazon Serverless Application Repository, to receive Amazon Bedrock redacted transcripts via mail.
+For those of you who want to keep the transcripts of such valuable interviews, wait not more. Get the “Bedrock Youtube transcription” which I have published to the Amazon Serverless Application Repository, to receive Amazon Bedrock redacted transcripts via mail.
 
 In the current version, the first 20 minutes of a video are trancribed. Chunking large transcripts I will soon publish in a newer version.
 
