@@ -6,6 +6,8 @@ Have you ever wondered who “Jana kun” is? Well, that is the famous Yann LeCu
 
 For those of you who want to keep the transcripts of such valuable interviews, wait not more. Get the “Bedrock Youtube transcription” which I have published to the Amazon Serverless Application Repository, to receive Amazon Bedrock redacted transcripts via mail.
 
+![Architecture Image](./img/Amazon-Bedrock-Youtube-Video-Transcription.png)
+
 In the current version, the first 20 minutes of a video are trancribed. Chunking large transcripts I will soon publish in a newer version.
 
 Steps for using the application:
