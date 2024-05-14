@@ -1,5 +1,7 @@
 # Let Amazon Bedrock redact raw Youtube video transcripts and get them via email
 
+See the Application in the **AWS Serverless Application Repository**: https://serverlessrepo.aws.amazon.com/applications/us-east-1/160817128410/Amazon-Bedrock-Youtube-Video-Transcription
+
 Have you ever wondered who “Jana kun” is? Well, that is the famous Yann LeCun, as part of a raw transcription in a Youtube Video – raw transcripts contain misspellings, no punctuation, no paragraphs:
 
 “the following is a conversation with Jana kun he's considered to be one of the fathers of deep learning which if …”
@@ -10,9 +12,12 @@ For those of you who want to keep the transcripts of such valuable interviews, w
 
 In the current version, the first 20 minutes of a video are trancribed. Chunking large transcripts I will soon publish in a newer version.
 
-Steps for using the application:
+## Steps for using the application:
 
 * At first, deploy the application either using the AWS console or the SAM CLI.
+
+* Request model access for Anthropic Claude 3 Haiku:
+https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess
 
 * When the deployment is done, **subscribe your email address** to the SNS Topic that contains the name "VideoInputTopic".
 
