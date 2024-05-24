@@ -49,6 +49,9 @@ He is also an outspoken personality, unafraid to speak his mind in a distinctive
 
 This is the Artificial Intelligence Podcast. If you enjoy it, subscribe on YouTube, give it five stars on iTunes, support us on Patreon, and follow me on Twitter, Alex Fridman, spelled F-R-I-D-M-A-N. And now, here's my conversation with Yann LeCun.
 
+## Deletion
+
+The application can be deleted by simply invoking "sam delete" from the command line.
 
 ## License
 
