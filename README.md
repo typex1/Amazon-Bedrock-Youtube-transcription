@@ -12,7 +12,7 @@ In the current version, the first 20 minutes of a video are trancribed. Chunking
 
 ## Steps for using the application:
 
-* At first, deploy the application either using the AWS console or the SAM CLI.
+* At first, deploy the application using the SAM CLI.
 
 * Request model access for Anthropic Claude 3 Haiku:
 https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess
