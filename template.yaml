@@ -1,0 +1,41 @@
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  YoutubeTranscript:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: !Sub
+        - Stack ${AWS::StackName} Function ${ResourceName}
+        - ResourceName: YoutubeTranscript
+      CodeUri: src/Function
+      Handler: handler.handler
+      Runtime: python3.12
+      MemorySize: 128
+      Timeout: 240
+      Tracing: Active
+      Environment:
+        Variables:
+          SENDTRANSCRIPTTOPIC_TOPIC_NAME: !GetAtt SendTranscriptTopic.TopicName
+          SENDTRANSCRIPTTOPIC_TOPIC_ARN: !Ref SendTranscriptTopic
+      Policies:
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt SendTranscriptTopic.TopicName
+        - arn:aws:iam::aws:policy/AmazonBedrockFullAccess
+      Events:
+        VideoInputTopic:
+          Type: SNS
+          Properties:
+            Topic: !Ref VideoInputTopic
+            Region: !Select
+              - 3
+              - !Split
+                - ':'
+                - !Ref VideoInputTopic
+  YoutubeTranscriptLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Retain
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${YoutubeTranscript}
+  VideoInputTopic:
+    Type: AWS::SNS::Topic
+  SendTranscriptTopic:
+    Type: AWS::SNS::Topic
