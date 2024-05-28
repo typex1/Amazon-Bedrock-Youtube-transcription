@@ -1,6 +1,6 @@
 # Let Amazon Bedrock redact raw Youtube video transcripts and get them via email
 
-Have you ever wondered who “Jana kun” is? Well, that is the famous Yann LeCun, as part of a raw transcription in a Youtube Video – raw transcripts contain misspellings, no punctuation, no paragraphs:
+Who is “**Jana kun**”? Well, that is the famous **Yann LeCun**, as part of a raw transcription in a Youtube Video – raw transcripts contain misspellings, no punctuation, no paragraphs:
 
 “the following is a conversation with Jana kun he's considered to be one of the fathers of deep learning which if …”
 
