@@ -5,6 +5,7 @@ from botocore.exceptions import ClientError
 import os
 import requests
 from botocore.config import Config
+import re
 
 # get sns topic name from environment variables
 topic_name = os.environ['SENDTRANSCRIPTTOPIC_TOPIC_NAME']
@@ -13,7 +14,6 @@ words_cutoff = 4000
 
 # send message to sns topic
 def send_message(topic_arn, subject, message):
-    #topic.publish(Subject=subject, Message=message)
     sns = boto3.resource('sns')
     topic = sns.Topic(topic_arn)
     response = topic.publish(
@@ -28,7 +28,6 @@ def reshape_text(prompt, topic_to_highlight="machine learning"):
     for word in prompt.split()[:words_cutoff]:
         shortened_prompt = shortened_prompt + " " + word
     prompt = shortened_prompt
-    # bedrock = boto3.client('bedrock-runtime', region_name = "us-east-1")
     config = Config(read_timeout=1000)
     bedrock = boto3.client(service_name='bedrock-runtime', region_name='us-east-1', config=config)
     #command = "Insert punctuation and paragraphs in the following text. Output format is markdown. Highlight keywords that are related to "+topic_to_highlight+" using bold font."
@@ -69,14 +68,6 @@ def reshape_text(prompt, topic_to_highlight="machine learning"):
     return answer
 
 def get_video_transcript(video_id):
-    # Yann LeCun: Self-Supervised Learning Explained | Lex Fridman Podcast Clips. 10min. contains Uh etc. Does not contain chapter titles.
-    # video_id="JNiY0RXxFZY"
-    # Yann LeCun: Deep Learning, ConvNets, and Self-Supervised Learning | Lex Fridman Podcast #36. 75 min. Contains chapter titles.
-    #video_id="SGSOCuByo24"
-    # Advice for machine learning beginners | Andrej Karpathy and Lex Fridman
-    # video_id="I2ZK3ngNvvI"
-    # 1:20 video on ML: rXGqKJoQ4qM
-    # to cover the case where the message contains the full video link, just use the last 11 digits (video id)
     video_id = video_id[-11:]
     response=YouTubeTranscriptApi.get_transcript(video_id) 
     contents=""
@@ -91,6 +82,11 @@ def get_html_title(video_id):
     n = requests.get('https://www.youtube.com/watch?v='+video_id, headers=headers)
     al = n.text
     html_title = al[al.find('<title>') + 7 : al.find('</title>')]
+    channel_name = re.search(r'"channelName":"([^"]*)"', al)
+    if channel_name:
+        print("channel name: {}".format(channel_name.group(1)))
+    else:
+        print("Channel name not found.")
     # cut " - YouTube" postfix from title (10 letters)
     return html_title[:-10]
 
