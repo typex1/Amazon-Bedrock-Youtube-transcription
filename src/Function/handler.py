@@ -10,7 +10,7 @@ import re
 # get sns topic name from environment variables
 topic_name = os.environ['SENDTRANSCRIPTTOPIC_TOPIC_NAME']
 topic_arn = os.environ['SENDTRANSCRIPTTOPIC_TOPIC_ARN']
-words_cutoff = 4000
+words_cutoff = 3800
 
 # send message to sns topic
 def send_message(topic_arn, subject, message):
